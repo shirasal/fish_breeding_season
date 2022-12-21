@@ -2,8 +2,6 @@ library(lubridate)
 library(tidyverse)
 library(scales)
 
-setwd("C:/Users/shirasalin/Documents/Work/NPA/FishingRegulations")
-
 stern_table <- read_csv("SternTable.csv") %>% 
   mutate(indigeneous = case_when(species == "Scomber colias" ~ TRUE,
                                  TRUE ~ as.logical(indigeneous)))
@@ -112,7 +110,7 @@ stern_three %>%
                           legend.text = element_text(size = 12),
                           plot.caption = element_text(size = 9))
 
-ggsave("Stern_Graph.png", units = "px", width = 4800, height = 3500)
+# ggsave("Stern_Graph.png", units = "px", width = 4800, height = 3500)
 
 stern_table %>% 
   filter(season_peak < season_end & season_peak > season_start) %>% 
